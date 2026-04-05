@@ -64,7 +64,7 @@
     <div class="popup_container">
       <img src="{% static 'images/logo-red.svg' %}" alt="Logo Apollo">
       <div class="form_container">
-        <form id="form_hotel" action="">
+        <form id="form_hotel" method="POST" action="{% url 'reservar' %}"> {% csrf_token %}
           <div class="name">
             <label for="name"> Nome Completo </label>
             <input type="text" name="name" placeholder="digite aqui" required>
@@ -259,6 +259,6 @@
     </div>
   </footer>
 </body>
-<script src="hotel.js"></script>
+<script src="{% static 'hotel.js' %}"></script>
 
 </html>
