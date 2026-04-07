@@ -1,0 +1,119 @@
+.section_title {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/img-banner-home.png");
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.section_title .container {
+  flex-direction: column;
+}
+.section_title h3 {
+  text-align: center;
+}
+#about .container {
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px 30px;
+}
+.history_hotel {
+  display: flex;
+  background-color: var(--color-wine);
+  border: 2px solid var(--color-gold);
+}
+ .history_container-image {
+    text-align: end;
+  }
+.history_container-text p {
+  font-size: 3rem;
+  font-weight: 400;
+  max-width: 60ch;
+  line-height: 1.3;
+  color: var(--color-primary-text);
+}
+#about .cards .container {
+  justify-content: space-between;
+  gap: 20px;
+  padding: 100px 0;
+}
+#about .card {
+  background-color: var(--color-wine);
+  color: var(--color-primary-text);
+  border: 2px solid var(--color-gold);
+  width: 300px;
+  height: 400px;
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+}
+#about .card .box-icon {
+  background-color: var(--color-gold);
+  padding: 10px;
+  border-radius: 50%;
+}
+#about .value-text h4 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+#about .value-text p {
+  font-weight: 400;
+  font-size: 2rem;
+}
+.team {
+  background-color: var(--color-primary-text);
+  color: var(--color-brown);
+  text-align: center;
+  padding: 20px 0;
+  border: 3px solid var(--color-gold);
+}
+#about .team .container {
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#about .team h3 {
+  color: var(--color-brown);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#about .team > p {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+.team figure img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  width: 200px;
+}
+.team figure img:hover {
+  transform: translateY(-5px);
+}
+.team figcaption {
+  padding: 10px 0;
+  font-size: 3rem;
+}
+#about .team figure p::after {
+  content: " ";
+  width: 100%;
+  height: 2px;
+  border: none;
+  display: block;
+  color: var(--color-gold);
+  background-color: var(--color-gold);
+  margin-top: 10px;
+}
