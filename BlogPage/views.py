@@ -16,4 +16,8 @@ def blog_page(request):
     except EmptyPage:
         result = paginator.page(paginator.num_pages)
 
-    return render(request, 'blog.html', blog_post)
+    context = {
+        'blog_post': result
+    }
+
+    return render(request, 'blog.html', context)

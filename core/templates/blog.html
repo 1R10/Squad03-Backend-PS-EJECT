@@ -18,7 +18,7 @@
   <title>Blog - Apollo Hotel</title>
 </head>
 
-<body>
+<body id="#body-blog">
   <header>
     <div class="container header_container">
       <div class="logo-apollo">
@@ -178,70 +178,26 @@
         </div>
       </div>
     </section>
-
     <section class="cards">
       <h3 class="subtitle-card">Aproveite o melhor de Mônaco</h3>
       <div class="container">
-        <div class="card">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>
-              <div class="caption-wrapper">
-                <h4>Noites de Gala em Monte Carlo</h4>
-                <p>Experimente o ápice do luxo no coração de Mônaco...</p>
-                <div class="bottom_caption-wrapper">
-                  <span class="date">03/04/2026</span>
-                  <button>Ler mais</button>
+        {% for p in blog_post %}
+          <div class="card">
+            <figure>
+              <img src="{{ p.image.url }}" alt="{{ p.image_alt }}">
+              <figcaption>
+                <div class="caption-wrapper">
+                  <h4>{{ p.title }}</h4>
+                  <p>{{ p.content | truncatewords:20 }}</p>
+                  <div class="bottom_caption-wrapper">
+                    <span class="date">{{p.created_at | date:"d/m/Y"}}</span>
+                    <button>Ler mais</button>
+                  </div>
                 </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="card">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>
-              <div class="caption-wrapper">
-                <h4>A Curva Mais Famosa do Mundo</h4>
-                <p class="para">Sinta a vibração dos motores da janela do seu quarto...</p>
-                <div class="bottom_caption-wrapper">
-                  <span class="date">03/04/2026</span>
-                  <button>Ler mais</button>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="card">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>
-              <div class="caption-wrapper">
-                <h4>Mônaco Além do Luxo: Um Roteiro de Descobertas</h4>
-                <p>Explore Monte Carlo como um verdadeiro conhecedor...</p>
-                <div class="bottom_caption-wrapper">
-                  <span class="date">03/04/2026</span>
-                  <button>Ler mais</button>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="card">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>
-              <div class="caption-wrapper">
-                <h4>Jantares sob as Estrelas de Monte Carlo</h4>
-                <p>Uma vista panorâmica do Mediterrâneo e um menu que desperta os sentidos. Descubra por que nosso terraço...</p>
-                <div class="bottom_caption-wrapper">
-                  <span class="date">03/04/2026</span>
-                  <button>Ler mais</button>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
+              </figcaption>
+            </figure>
+          </div>
+        {% endfor %}
     </section>
   </main>
   <footer>
@@ -298,6 +254,7 @@
     </div>
   </footer>
 </body>
-<script src="{% static 'hotel.js' %}"></script>
+<script src="{% static 'js/hotel.js' %}"></script>
+<script src="{% static 'js/blog.js' %}" defer></script>
 
 </html>
