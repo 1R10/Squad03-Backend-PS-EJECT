@@ -30,7 +30,7 @@
       <nav class="menu_header">
         <ul class="list_menu-header">
           <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
           <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
         </ul>
         <div class="menu_hamburguer">
@@ -54,7 +54,7 @@
       <nav class="menu_header">
         <ul class="list_menu-header">
           <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
           <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
         </ul>
       </nav>
@@ -194,6 +194,10 @@
                     <img src="{{ blog.image.url}}" alt="{{ blog.image_alt }}">
                   <figcaption>{{ blog.image_caption }}</figcaption>
                   </figure>
+
+                  <p>
+                    {{ p.text }}
+                  </p>
                 </div>
               {% else %}
                 <p>

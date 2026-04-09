@@ -30,7 +30,7 @@
       <nav class="menu_header">
         <ul class="list_menu-header">
           <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
           <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
         </ul>
       </nav>
@@ -56,7 +56,7 @@
       <nav class="menu_header">
         <ul class="list_menu-header">
           <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
           <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
         </ul>
       </nav>
@@ -179,8 +179,22 @@
         </div>
       </div>
     </section>
+    
     <section class="cards">
       <h3 class="subtitle-card">Aproveite o melhor de Mônaco</h3>
+
+      <section class="pagination">
+      <div class="container">
+        <div class="pagination-item">
+          
+          {% for i in blog_post.paginator.page_range %} 
+            
+            <button><a href="?page={{ i }}" class="{% if i == blog_post.number %} activate {% endif %}">{{ i }}</a></button>
+            
+          {% endfor %}
+        </div>
+      </div>
+    </section>
       <div class="container">
 
         {% for p in blog_post %}
@@ -200,7 +214,7 @@
             </figure>
           </div>
         {% endfor %}
-
+      </div>
     </section>
   </main>
   <footer>

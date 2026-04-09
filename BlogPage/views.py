@@ -7,7 +7,7 @@ def blog_page(request):
     blog_post = BlogPost.objects.all()
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(blog_post, 5)
+    paginator = Paginator(blog_post, 6)
 
     try:
         result = paginator.page(page)
@@ -32,16 +32,14 @@ def blog_detail(request, id):
             continue
 
         words = p.split()
-        word_last = words[-1] if words else ""
         word_one = words[0] if words else ""
         
-        if word_one == "!subtitle!":
+        if (word_one == "!subtitle!" or word_one == "!image!"):
             words.pop(0)
             p = ' '.join(words)
 
         paragraphs_conf.append({
             'word_one' : word_one,
-            'word_last' : word_last,
             'text' : p
         })
     
