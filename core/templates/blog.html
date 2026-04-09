@@ -22,19 +22,25 @@
   <header>
     <div class="container header_container">
       <div class="logo-apollo">
-        <h1>APOLLO</h1>
-        <h2>HOTEL</h2>
+        <a href="index.html">
+          <h1>APOLLO</h1>
+          <h2>HOTEL</h2>
+        </a>
       </div>
       <nav class="menu_header">
         <ul class="list_menu-header">
           <li class="list_item-header"><a href="index.html">Home</a></li>
           <li class="list_item-header"><a href="blog.html">Blog</a></li>
           <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
-          <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-          <link rel="stylesheet" href="{% static 'css/menu-hamburguer.css' %}">
-          <link rel="stylesheet" href="{% static 'css/reserve.css' %}">
         </ul>
-        <div class="menu_hamburguer">
+      </nav>
+      <div class="container_menu-button">
+        <div class="button_call-action">
+          <button class="button_item">
+            Fazer Reserva
+          </button>
+        </div>
+      <div id="hamburguer-main" class="menu_hamburguer">
           <button id="hamburguer_button" class="hamburguer_icon">
             <span class="icon"></span>
             <span class="icon"></span>
@@ -42,11 +48,6 @@
             <span id="cancel">X</span>
           </button>
         </div>
-      </nav>
-      <div class="button_call-action">
-        <button class="button_item">
-          Fazer Reserva
-        </button>
       </div>
     </div>
   </header>
@@ -170,7 +171,7 @@
     <section class="banner">
       <div class="container">
         <h2>Destinos à dois perto de você</h2>
-        <h3>Descubra refúgios exclusivos onde cada detalhe foi planejado para celebrar o amor</h3>
+        <p class="introduction">Descubra refúgios exclusivos onde cada detalhe foi planejado para celebrar o amor</p>
         <div class="button_call-action">
           <button id="reserve-button" class="button_item">
             Fazer Reserva
@@ -181,6 +182,7 @@
     <section class="cards">
       <h3 class="subtitle-card">Aproveite o melhor de Mônaco</h3>
       <div class="container">
+
         {% for p in blog_post %}
           <div class="card">
             <figure>
@@ -191,13 +193,14 @@
                   <p>{{ p.content | truncatewords:20 }}</p>
                   <div class="bottom_caption-wrapper">
                     <span class="date">{{p.created_at | date:"d/m/Y"}}</span>
-                    <button>Ler mais</button>
+                    <a href="{% url 'blog_detail' p.id %}"><button>Ler mais</button></a>
                   </div>
                 </div>
               </figcaption>
             </figure>
           </div>
         {% endfor %}
+
     </section>
   </main>
   <footer>
@@ -209,31 +212,31 @@
       <div class="footer_sub-container">
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/instagram.png' %}" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
+            <img class="icone" src="{% static 'midia/images/icons/instagram.png' %}" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
               <p>@ApolloHotel</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/facebook.png' %}" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
+            <img class="icone" src="{% static 'midia/images/icons/facebook.png' %}" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
               <p>ApolloHotel</p>
             </a>
           </li>
         </ul>
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/phone.png' %}" alt="icone phone">
+            <img class="icone" src="{% static 'midia/images/icons/phone.png' %}" alt="icone phone">
             <a class="link" href="tell:+37792506500" target="_blank" title="Phone number">
               <p>+377 9250 - 6500</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/email.png' %}" alt="icone email">
+            <img class="icone" src="{% static 'midia/images/icons/email.png' %}" alt="icone email">
             <a class="link" href="mailto:apollohotel@ejectufrn.com.br" target="_blank" title="E-mail">
               <p>apollohotel@ejectufrn.com.br</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/map.png' %}" alt="icone map">
+            <img class="icone" src="{% static 'midia/images/icons/map.png' %}" alt="icone map">
             <a href="https://share.google/6eSVSr0tfvhIuniUh" target="_blank" title="endereço">
               <p>Pl. du Casino, 98000 Monaco, Mônaco</p>
             </a>
@@ -248,13 +251,13 @@
         <span class="footer_line"></span>
         <div class="copyright_container">
           <small>2026 - MISSÃOEJECT</small>
-          <img src="{% static 'images/logo-eject.svg' %}" alt="Logo EJECT" class="eject_logo">
+          <img src="{% static 'midia/images/logo-eject.svg' %}" alt="Logo EJECT" class="eject_logo">
         </div>
       </div>
     </div>
   </footer>
 </body>
-<script src="{% static 'js/hotel.js' %}"></script>
+<script src="{% static 'js/hotel.js' %}" defer></script>
 <script src="{% static 'js/blog.js' %}" defer></script>
 
 </html>

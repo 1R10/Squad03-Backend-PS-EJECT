@@ -22,8 +22,10 @@
   <header>
     <div class="container header_container">
       <div class="logo-apollo">
-        <h1>APOLLO</h1>
-        <h2>HOTEL</h2>
+        <a href="index.html">
+          <h1>APOLLO</h1>
+          <h2>HOTEL</h2>
+        </a>
       </div>
       <nav class="menu_header">
         <ul class="list_menu-header">
@@ -167,209 +169,38 @@
     <div class="container">
       <div class="content-1">
         <h2 class="title_blog">
-          Noites de gala em Monte Carlo
+          {{ blog.title }}
         </h2>
-        <div class="author">
-          <img src="{% static 'images/blog/author.png' %}" alt="">
+        <div class="author">  
+          <img src="{% static 'midia/images/blog/author.png' %}" alt="">
           <div class="author-name">
-            <p>Por<span> Concierge Anne Elise<span></p>
-            <p>25/03/2026</p>
+            <p>Por<span> {{ blog.author }}<span></p>
+            <p>{{ blog.created_at | date:"d/m/Y"}}</p>
           </div>
         </div>
         <div class="text">
           <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>Legenda da imagem</figcaption>
+            <img src="{{ blog.image.url}}" alt="{{ blog.image_alt }}">
+            <figcaption>{{ blog.image_caption }}</figcaption>
           </figure>
-          <p class="paragraph-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lectus lectus, pulvinar vel congue sit amet, tempus vitae neque. Etiam pharetra consequat nulla. Nunc laoreet lacus ac dui eleifend, luctus bibendum arcu tempus. Donec non mi at dui consectetur faucibus in ut velit. Vestibulum velit libero, tincidunt et hendrerit at, fermentum nec enim. In congue ante eget dui efficitur malesuada nec a nibh. Vestibulum sit amet justo enim. Fusce vulputate nulla ut blandit tristique. Phasellus mattis, dolor id maximus dapibus, nulla felis hendrerit velit.
-            Nulla non enim neque. Etiam sem odio, iaculis ut vehicula id, sodales sed velit. Maecenas dapibus neque id leo viverra, at bibendum purus blandit. Vivamus nulla ante, congue id metus sed, viverra commodo sapien. Suspendisse congue, justo eu rutrum sagittis, erat quam pellentesque sapien, quis placerat dolor tellus a leo.
-          </p>
-          <h3 class="subtitle"> Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer in tortor accumsan fringilla.
-
-          </h3>
-          <p class="paragraph-2">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-          <div class="caption-image">
-            <figure>
-              <img src="{% static 'images/blog/image 12.png' %}" alt="">
-              <figcaption>Legenda da imagem</figcaption>
-
-            </figure>
-            <p class="paragraph-3">
-              In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac.
-            </p>
-          </div>
-          <p class="paragraph-4">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-          </p>
-          <h3 class="subtitle"> In consequat, nisl finibus pretium, tellus arcu luctus eros, a placerat felis eu nibh. Suspendisse potenti. Vestibulum vel risus.</h3>
-          <p class="paragraph-5">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-        </div>
-        <div class="button_blog" onclick="backBlog()">
-          <a href="blog.html">
-            <button>Voltar ao blog</button>
-          </a>
-        </div>
-      </div>
-      <div class="content-2">
-        <h2 class="title_blog">
-          A curva mais famosa do mundo
-        </h2>
-        <div class="author">
-          <img src="{% static 'images/blog/author.png' %}" alt="">
-          <div class="author-name">
-            <p>Por<span> Concierge Anne Elise<span></p>
-            <p>25/03/2026</p>
-          </div>
-        </div>
-        <div class="text">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>Legenda da imagem</figcaption>
-          </figure>
-          <p class="paragraph-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lectus lectus, pulvinar vel congue sit amet, tempus vitae neque. Etiam pharetra consequat nulla. Nunc laoreet lacus ac dui eleifend, luctus bibendum arcu tempus. Donec non mi at dui consectetur faucibus in ut velit. Vestibulum velit libero, tincidunt et hendrerit at, fermentum nec enim. In congue ante eget dui efficitur malesuada nec a nibh. Vestibulum sit amet justo enim. Fusce vulputate nulla ut blandit tristique. Phasellus mattis, dolor id maximus dapibus, nulla felis hendrerit velit.
-            Nulla non enim neque. Etiam sem odio, iaculis ut vehicula id, sodales sed velit. Maecenas dapibus neque id leo viverra, at bibendum purus blandit. Vivamus nulla ante, congue id metus sed, viverra commodo sapien. Suspendisse congue, justo eu rutrum sagittis, erat quam pellentesque sapien, quis placerat dolor tellus a leo.
-          </p>
-          <h3 class="subtitle"> Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer in tortor accumsan fringilla.
-
-          </h3>
-          <p class="paragraph-2">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-          <div class="caption-image">
-            <figure>
-              <img src="{% static 'images/blog/image 12.png' %}" alt="">
-              <figcaption>Legenda da imagem</figcaption>
-
-            </figure>
-            <p class="paragraph-3">
-              In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac.
-            </p>
-          </div>
-          <p class="paragraph-4">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-          </p>
-          <h3 class="subtitle"> In consequat, nisl finibus pretium, tellus arcu luctus eros, a placerat felis eu nibh. Suspendisse potenti. Vestibulum vel risus.</h3>
-          <p class="paragraph-5">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-        </div>
-        <div class="button_blog" onclick="backBlog()">
-          <a href="blog.html">
-            <button>Voltar ao blog</button>
-          </a>
-        </div>
-      </div>
-      <div class="content-3">
-        <h2 class="title_blog">
-          Mônaco além do Luxo: Um roteiro de descobertas
-        </h2>
-        <div class="author">
-          <img src="{% static 'images/blog/author.png' %}" alt="">
-          <div class="author-name">
-            <p>Por<span> Concierge Anne Elise<span></p>
-            <p>25/03/2026</p>
-          </div>
-        </div>
-        <div class="text">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>Legenda da imagem</figcaption>
-          </figure>
-          <p class="paragraph-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lectus lectus, pulvinar vel congue sit amet, tempus vitae neque. Etiam pharetra consequat nulla. Nunc laoreet lacus ac dui eleifend, luctus bibendum arcu tempus. Donec non mi at dui consectetur faucibus in ut velit. Vestibulum velit libero, tincidunt et hendrerit at, fermentum nec enim. In congue ante eget dui efficitur malesuada nec a nibh. Vestibulum sit amet justo enim. Fusce vulputate nulla ut blandit tristique. Phasellus mattis, dolor id maximus dapibus, nulla felis hendrerit velit.
-            Nulla non enim neque. Etiam sem odio, iaculis ut vehicula id, sodales sed velit. Maecenas dapibus neque id leo viverra, at bibendum purus blandit. Vivamus nulla ante, congue id metus sed, viverra commodo sapien. Suspendisse congue, justo eu rutrum sagittis, erat quam pellentesque sapien, quis placerat dolor tellus a leo.
-          </p>
-          <h3 class="subtitle"> Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer in tortor accumsan fringilla.
-
-          </h3>
-          <p class="paragraph-2">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-          <div class="caption-image">
-            <figure>
-              <img src="{% static 'images/blog/image 12.png' %}" alt="">
-              <figcaption>Legenda da imagem</figcaption>
-
-            </figure>
-            <p class="paragraph-3">
-              In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac.
-            </p>
-          </div>
-          <p class="paragraph-4">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-          </p>
-          <h3 class="subtitle"> In consequat, nisl finibus pretium, tellus arcu luctus eros, a placerat felis eu nibh. Suspendisse potenti. Vestibulum vel risus.</h3>
-          <p class="paragraph-5">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-        </div>
-        <div class="button_blog" onclick="backBlog()">
-          <a href="blog.html">
-            <button>Voltar ao blog</button>
-          </a>
-        </div>
-      </div>
-      <div class="content-4">
-        <h2 class="title_blog">
-          Jantares sob as Estrelas de Monte Carlo
-        </h2>
-        <div class="author">
-          <img src="{% static 'images/blog/author.png' %}" alt="">
-          <div class="author-name">
-            <p>Por<span> Concierge Anne Elise<span></p>
-            <p>25/03/2026</p>
-          </div>
-        </div>
-        <div class="text">
-          <figure>
-            <img src="{% static 'images/cards/image 10.png' %}" alt="">
-            <figcaption>Legenda da imagem</figcaption>
-          </figure>
-          <p class="paragraph-1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lectus lectus, pulvinar vel congue sit amet, tempus vitae neque. Etiam pharetra consequat nulla. Nunc laoreet lacus ac dui eleifend, luctus bibendum arcu tempus. Donec non mi at dui consectetur faucibus in ut velit. Vestibulum velit libero, tincidunt et hendrerit at, fermentum nec enim. In congue ante eget dui efficitur malesuada nec a nibh. Vestibulum sit amet justo enim. Fusce vulputate nulla ut blandit tristique. Phasellus mattis, dolor id maximus dapibus, nulla felis hendrerit velit.
-            Nulla non enim neque. Etiam sem odio, iaculis ut vehicula id, sodales sed velit. Maecenas dapibus neque id leo viverra, at bibendum purus blandit. Vivamus nulla ante, congue id metus sed, viverra commodo sapien. Suspendisse congue, justo eu rutrum sagittis, erat quam pellentesque sapien, quis placerat dolor tellus a leo.
-          </p>
-          <h3 class="subtitle"> Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer in tortor accumsan fringilla.
-
-          </h3>
-          <p class="paragraph-2">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
-          <div class="caption-image">
-            <figure>
-              <img src="{% static 'images/blog/image 12.png' %}" alt="">
-              <figcaption>Legenda da imagem</figcaption>
-
-            </figure>
-            <p class="paragraph-3">
-              In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac.
-            </p>
-          </div>
-          <p class="paragraph-4">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-          </p>
-          <h3 class="subtitle"> In consequat, nisl finibus pretium, tellus arcu luctus eros, a placerat felis eu nibh. Suspendisse potenti. Vestibulum vel risus.</h3>
-          <p class="paragraph-5">
-            In vehicula lectus feugiat orci hendrerit, quis posuere massa tincidunt. Quisque pharetra ante sit amet luctus luctus. Donec pulvinar at diam non tempus. Nunc leo leo, lobortis nec ipsum quis, venenatis suscipit magna. Etiam molestie volutpat augue eu condimentum. Suspendisse potenti. Vestibulum vel varius risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut mi augue, mollis in dignissim ac, maximus ac massa.
-            Vestibulum vitae iaculis nulla, at finibus sem. Cras sagittis mauris id ante euismod tempus. Nam in lectus lorem. Aliquam mollis nisl neque, id dictum dui imperdiet sed. Nulla tincidunt, odio sit amet mattis commodo, felis nulla feugiat leo, in lacinia nulla justo non tortor. Fusce congue vehicula ex a suscipit. Cras a mi elementum, pulvinar velit vel, congue nulla. Pellentesque consequat sem vitae pretium laoreet. Suspendisse sodales euismod elit finibus.
-          </p>
+            {% for p in paragraphs %}
+              {% if p.word_one == "!subtitle!" %}
+                <h3 class="subtitle">
+                  {{ p.text }}
+                </h3>
+              {% elif p.word_one == "!image!" %}
+                <div class="caption-image">
+                  <figure>
+                    <img src="{{ blog.image.url}}" alt="{{ blog.image_alt }}">
+                  <figcaption>{{ blog.image_caption }}</figcaption>
+                  </figure>
+                </div>
+              {% else %}
+                <p>
+                  {{ p.text }}
+                </p>
+              {% endif %}
+            {% endfor %}
         </div>
         <div class="button_blog" onclick="backBlog()">
           <a href="blog.html">
@@ -388,31 +219,31 @@
       <div class="footer_sub-container">
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/instagram.png' %}" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
+            <img class="icone" src="{% static 'midia/images/icons/instagram.png' %}" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
               <p>@ApolloHotel</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/facebook.png' %}" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
+            <img class="icone" src="{% static 'midia/images/icons/facebook.png' %}" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
               <p>ApolloHotel</p>
             </a>
           </li>
         </ul>
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/phone.png' %}" alt="icone phone">
+            <img class="icone" src="{% static 'midia/images/icons/phone.png' %}" alt="icone phone">
             <a class="link" href="tell:+37792506500" target="_blank" title="Phone number">
               <p>+377 9250 - 6500</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/email.png' %}" alt="icone email">
+            <img class="icone" src="{% static 'midia/images/icons/email.png' %}" alt="icone email">
             <a class="link" href="mailto:apollohotel@ejectufrn.com.br" target="_blank" title="E-mail">
               <p>apollohotel@ejectufrn.com.br</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="{% static 'images/icons/map.png' %}" alt="icone map">
+            <img class="icone" src="{% static 'midia/images/icons/map.png' %}" alt="icone map">
             <a href="https://share.google/6eSVSr0tfvhIuniUh" target="_blank" title="endereço">
               <p>Pl. du Casino, 98000 Monaco, Mônaco</p>
             </a>
@@ -427,13 +258,13 @@
         <span class="footer_line"></span>
         <div class="copyright_container">
           <small>2026 - MISSÃOEJECT</small>
-          <img src="{% static 'images/logo-eject.svg' %}" alt="Logo EJECT" class="eject_logo">
+          <img src="{% static 'midia/images/logo-eject.svg' %}" alt="Logo EJECT" class="eject_logo">
         </div>
       </div>
     </div>
   </footer>
 </body>
-<script src="{% static 'js/hotel.js' %}"></script>
+<script src="{% static 'js/hotel.js' %}" defer></script>
 <script src="{% static 'js/blog.js' %}" defer></script>
 
 </html>
