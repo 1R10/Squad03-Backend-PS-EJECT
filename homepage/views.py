@@ -13,6 +13,8 @@ def reservar(request):
         adults    = request.POST.get('amount-adult')
         kids      = request.POST.get('amount-child')
         f1_Team   = request.POST.get('equipe-f1')
+        rest_date = request.POST.get('restaurant-date')
+        rest_time = request.POST.get('restaurant-time')
         
         
         reserva   =  Hospedes(
@@ -21,13 +23,18 @@ def reservar(request):
                     crianca   = kids,
                     check_in  = check_in, 
                     check_out = check_out,
-                    quarto    =f1_Team )
+                    quarto    = f1_Team,
+                    rest_dia  = rest_date,
+                    rest_hora = rest_time,
+                     )
                     
         reserva.save()
-        return redirect('homepage')
+        referer = request.META.get('HTTP_REFERER', '/') # procura a url anterior a do forms. antes iria so pra homepage
+        return redirect(referer)
+        #return redirect('homepage')
 
 def blog(request):
-    return render(request, 'blog')
+    return render(request, 'blog.html')
 
 def about(request):
     return render(request, 'about.html')

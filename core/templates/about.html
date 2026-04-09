@@ -67,15 +67,14 @@
     </div>
   </section>
   <section id="popup_reserve" class="popup_reserve">
-    <button class="close-reserve" id="close-reserve">Fechar</button>
+    <button class="close-reserve" id="close-reservation">Fechar</button>
     <div class="logo-apollo">
       <h1>APOLLO</h1>
       <h2>HOTEL</h2>
     </div>
     <div class="popup_container" id="popup_container">
       <div class="form_container">
-        <form id="form_hotel" method="POST" action="{% url 'reservar' %}">
-          {% csrf_token %}
+        <form id="form_hotel" method="POST" action="{% url 'reservar' %}"> 
           <div class="name">
             <label for="name">Nome completo </label>
             <input type="text" name="name" placeholder="digite aqui" required>
@@ -152,7 +151,7 @@
               </div>
             </div>
           </fieldset>
-        </form>
+        {% csrf_token %}</form>
         <div class="button_call-action">
           <button type="submit" id="reserve-button" form="form_hotel" class="button_item button_form_reserve">
             Reservar
