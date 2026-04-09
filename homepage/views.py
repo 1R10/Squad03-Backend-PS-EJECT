@@ -27,7 +27,7 @@ def reservar(request):
         return redirect('homepage')
 
 def blog(request):
-    return render(request, 'blog.html')
+    return render(request, 'blog')
 
 def about(request):
     return render(request, 'about.html')

@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
+    #path('about/', include('homepage.urls')),
    # path('blog/', include('blog.urls')),   # apenas declarei para ter um exemplo. isso NÃO está pronto. não leva a lugar algum ~Ryan
    # path('about/', include('about.urls')), # mesmo do blog/. preciso decidir entre criar um app pra cada página ou fazer tudo no mesmo local ~Ryan
 ]
