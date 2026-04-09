@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Ryan Guilherme\Desktop\PSEJECTBACK\Squad03-Backend-PS-EJECT\venv"
+VIRTUAL_ENV="C:\Users\Ryan Guilherme\Desktop\Squad03-Backend-PS-EJECT\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

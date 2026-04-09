@@ -11,4 +11,7 @@ class Hospedes(models.Model):
     check_in  = models.DateField() # vai receber em formato dd-mm-aaaa ~Ryan
     check_out = models.DateField()
     quarto    = models.TextField()
-
+    email     = models.EmailField(default='', unique=False) 
+    telefone  = models.CharField(default='', max_length=20)
+    #rest_Data = models.DateField()
+    #rest_hora = models.TimeField()
