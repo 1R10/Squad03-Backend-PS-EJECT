@@ -6,7 +6,4 @@ __pycache__/
 *.pyc
 
 #banco de dados
-db.sqlite3
-
-
-blog_co.html
+*.sqlite3
