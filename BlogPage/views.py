@@ -42,8 +42,6 @@ def blog_detail(request, id):
             'word_one' : word_one,
             'text' : p
         })
-    
-    print("paragrafos: ", [ p['word_one'] for p in paragraphs_conf])
 
     context = {
         'blog': blog_detail,
