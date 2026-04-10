@@ -31,8 +31,8 @@
   border: 2px solid var(--color-gold);
 }
 .history_container-image {
-  text-align: end;
-}
+    text-align: end;
+ }
 .history_container-text p {
   font-size: 3rem;
   font-weight: 400;
