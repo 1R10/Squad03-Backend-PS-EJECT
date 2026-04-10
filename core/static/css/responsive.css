@@ -6,7 +6,7 @@
     flex-direction: column;
   }
   .subtitle-card:not(#blog .subtitle-card) {
-    margin-bottom: 40px;
+margin-bottom: 40px;
   }
   .subtitle-card {
     text-align: center;
@@ -106,7 +106,7 @@
   .cards h3,
   .gallery h3,
   #about .section_title h3,
-  #about .team h3 {
+  #about .team h3, .suites h3 {
     font-size: 3rem;
     text-align: center;
   }

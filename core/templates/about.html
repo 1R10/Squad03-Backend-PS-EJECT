@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'css/menu-hamburguer.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/suites.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <title>Sobre nós - Apollo Hotel</title>
 </head>
@@ -277,6 +278,24 @@
       </div>
     </section>
   </main>
+<section class="suites">
+      <h3>Conheça as nossas temáticas e luxuosas Suítes</h3>
+      <div class="swiper">
+        <div class="swiper-wrapper container-carrossel">
+          <figure class="swiper-slide bed11">
+            <img src="{% static 'images/bedroom/martin-aramco.png'%}" alt="">
+            <figcaption>
+              <div class="label">
+                <p>Suíte Aston Martin Aramco</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+        <button class="suites-f1"><a href="{% url 'homepage' %}#suites-f1">Ver todas a Suítes disponíveis
+        </button>
+    </section>
+    </div>
+
   <footer>
     <div class="container footer_container">
       <div class="logo-apollo">
