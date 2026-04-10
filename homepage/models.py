@@ -16,3 +16,5 @@ class Hospedes(models.Model):
     rest_dia  = models.DateField()
     rest_hora = models.TimeField()
 
+class timer_corrida(models.Model):
+    date = models.DateTimeField()

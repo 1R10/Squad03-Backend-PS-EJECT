@@ -51,3 +51,5 @@ def blog_detail(request, id):
     }
 
     return render(request, 'content-blog.html', context)
+
+

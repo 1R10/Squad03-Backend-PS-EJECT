@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Hospedes
+from .models import Hospedes, timer_corrida
 # aqui vai renderizar o html aparentemente ~Ryan
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'base.html')
 
 def reservar(request):
     if request.method =='POST': # por padrão é GET ~Ryan
@@ -37,9 +37,9 @@ def reservar(request):
         referer = request.META.get('HTTP_REFERER', '/') # procura a url anterior a do forms. antes iria so pra homepage
         return redirect(referer)
         #return redirect('homepage')
-
 def blog(request):
     return render(request, 'blog.html')
 
 def about(request):
     return render(request, 'about.html')
+
