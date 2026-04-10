@@ -172,9 +172,9 @@
           {{ blog.title }}
         </h2>
         <div class="author">  
-          <img src="{% static 'images/blog/author.png' %}" alt="">
+          <img src="{{ blog.author.image.url }}" alt="">
           <div class="author-name">
-            <p>Por<span> {{ blog.author }}<span></p>
+            <p>Por<span> {{ blog.author.full_name }}<span></p>
             <p>{{ blog.created_at | date:"d/m/Y"}}</p>
           </div>
         </div>
@@ -207,7 +207,7 @@
             {% endfor %}
         </div>
         <div class="button_blog" onclick="backBlog()">
-          <a href="blog.html">
+          <a href="{% url 'blog_page' %}">
             <button>Voltar ao blog</button>
           </a>
         </div>
