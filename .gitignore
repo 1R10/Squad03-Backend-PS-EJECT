@@ -9,3 +9,4 @@ migrations/
 #banco de dados
 *.sqlite3
 media/
+BlogPage/migrations/0001_initial.py

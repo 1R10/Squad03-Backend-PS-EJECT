@@ -78,7 +78,7 @@
     </div>
     <div class="popup_container" id="popup_container">
       <div class="form_container">
-        <form id="form_hotel" method="POST" action="">
+        <form id="form_hotel" method="POST" action="{% url 'reservar' %}">  {% csrf_token %}
           <div class="name">
             <label for="name">Nome completo </label>
             <input type="text" name="name" placeholder="digite aqui" required>
@@ -318,7 +318,7 @@
         </div>
         <div class="popup_container" id="popup_container_restaurant">
           <div class="form_container">
-            <form id="res_form_hotel" method="POST">
+            <form id="res_form_hotel" method="POST"> {% csrf_token %}
               <fieldset class="name-and-email">
                 <div class="name">
                   <label for="name">Nome completo </label>
