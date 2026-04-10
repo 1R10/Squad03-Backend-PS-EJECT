@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 import os
 from pathlib import Path
 
@@ -57,6 +56,7 @@ ROOT_URLCONF = 'Apollo_Hotel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -106,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
 
@@ -122,9 +123,22 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'core/static')
 ]
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL  = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#config do email no django
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST    = 'smtp.gmail.com'
+EMAIL_PORT    = 587
+EMAIL_USE_TLS = True
+
+
+#Config da conta 
+EMAIL_HOST_USER     = 'ryanguilherme2003@gmail.com' # email de autenticaçao
+EMAIL_HOST_PASSWORD = 'nlht fznq zbpd bykk'         # vou excluir essa chave depois. sem problemas a exposiçao
+DEFAULT_FROM_EMAIL = 'ryanguilherme2003@gmail.com'  #remetente.  vai aparecer no email
