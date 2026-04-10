@@ -3,7 +3,7 @@ from .models import Hospedes, timer_corrida
 # aqui vai renderizar o html aparentemente ~Ryan
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 def reservar(request):
     if request.method =='POST': # por padrão é GET ~Ryan
@@ -43,3 +43,5 @@ def blog(request):
 def about(request):
     return render(request, 'about.html')
 
+def time(request):
+    return render(request, 'time.html')

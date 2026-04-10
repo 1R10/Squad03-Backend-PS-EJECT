@@ -168,8 +168,9 @@
   </section>
   <div id="overlay"></div>
   <main id="blog">
-    {% block contador %}
-    {% endblock %}
+    
+    {% include 'time.html' %}
+
     <section class="banner">
       <div class="container">
         <h2>Destinos à dois perto de você</h2>
@@ -274,5 +275,6 @@
   </footer>
 </body>
 <script src="{% static 'js/hotel.js' %}" defer></script>
+<script src="{% static 'js/timerCorrida.js' %}" defer></script>
 
 </html>

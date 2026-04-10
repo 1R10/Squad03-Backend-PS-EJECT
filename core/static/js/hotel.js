@@ -277,7 +277,8 @@ const swiper = new Swiper(".swiper", {
 /*função para o temporizador ~emanuel*/
 
 document.addEventListener("DOMContentLoaded", function () {
-  const display = document.getElementById("timer");
+  
+  const display = document.getElementsByClassName("timer")[0];
 
   if (!display) return;
 
@@ -290,11 +291,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const distance = countDownDate - now;
 
         // Cálculos matemáticos para dias, horas, minutos e segundos
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
         // Mostra o resultado na div (essa parte editei por mim mesmo ~emanuel)
-        if (hours < 10 && minutes < 10) {
+        if (days > 0) {
+          display.innerHTML = days + "d" + hours + "h";
+        } else if (hours < 10 && minutes < 10) {
           display.innerHTML = "0" + hours + ":0" + minutes;
         } else if (hours < 10) {
           display.innerHTML = "0" + hours + ":" + minutes;
