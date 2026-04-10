@@ -6,14 +6,15 @@ def index(request):
     return render(request, 'index.html')
 
 def reservar(request):
-    if request.method =='POST': # por padrão é GET
+    if request.method =='POST': # por padrão é GET ~Ryan
+        print("POST recebido:", request.POST)
         name      = request.POST.get('name')
         mail      = request.POST.get('email')
         phone     = request.POST.get('phone')
         check_in  = request.POST.get('check-in')
         check_out = request.POST.get('check-out')
-        adults    = request.POST.get('amount-adult')
-        kids      = request.POST.get('amount-child')
+        adults    = request.POST.get('amount-adult') or 0
+        kids      = request.POST.get('amount-child') or 0
         f1_Team   = request.POST.get('equipe-f1')
         rest_date = request.POST.get('restaurant-date')
         rest_time = request.POST.get('restaurant-time')

@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Hospedes
 
-# Register your models here.
+admin.site.register(Hospedes) #aparecer na admin

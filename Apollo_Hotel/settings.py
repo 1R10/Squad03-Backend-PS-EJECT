@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 import os
 from pathlib import Path
 from decouple import config
@@ -56,7 +57,6 @@ ROOT_URLCONF = 'Apollo_Hotel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -106,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
-LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
 
@@ -123,7 +122,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'core/static')
 ]
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL  = '/media/'
 # Default primary key field type
