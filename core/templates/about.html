@@ -1,17 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="src/css/geral.css">
-  <link rel="stylesheet" href="src/css/about.css">
-  <link rel="stylesheet" href="src/css/cards.css">
-  <link rel="stylesheet" href="src/css/responsive.css">
-  <link rel="stylesheet" href="src/css/reserve.css">
-  <link rel="stylesheet" href="src/css/menu-hamburguer.css">
+  <link rel="stylesheet" href="{% static 'css/geral.css' %}">
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <link rel="stylesheet" href="{% static 'css/reserve.css' %}">
+  <link rel="stylesheet" href="{% static 'css/menu-hamburguer.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/suites.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <title>Sobre nós - Apollo Hotel</title>
 </head>
@@ -20,16 +22,16 @@
   <header>
     <div class="container header_container">
       <div class="logo-apollo">
-        <a href="index.html">
+        <a href="{% url 'homepage' %}">
           <h1>APOLLO</h1>
           <h2>HOTEL</h2>
         </a>
       </div>
       <nav class="menu_header">
         <ul class="list_menu-header">
-          <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
-          <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
+          <li class="list_item-header"><a href="{% url 'homepage' %}">Home</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'about' %}">Sobre Nós</a></li>
         </ul>
       </nav>
       <div class="container_menu-button">
@@ -53,9 +55,9 @@
     <div class="container">
       <nav class="menu_header">
         <ul class="list_menu-header">
-          <li class="list_item-header"><a href="index.html">Home</a></li>
-          <li class="list_item-header"><a href="blog.html">Blog</a></li>
-          <li class="list_item-header"><a href="about.html">Sobre Nós</a></li>
+          <li class="list_item-header"><a href="{% url 'homepage' %}">Home</a></li>
+          <li class="list_item-header"><a href="{% url 'blog_page' %}">Blog</a></li>
+          <li class="list_item-header"><a href="{% url 'about' %}">Sobre Nós</a></li>
         </ul>
       </nav>
       <div class="button_call-action">
@@ -66,14 +68,14 @@
     </div>
   </section>
   <section id="popup_reserve" class="popup_reserve">
-    <span id="close-reservation">Fechar</span>
+    <button class="close-reserve" id="close-reservation">Fechar</button>
     <div class="logo-apollo">
       <h1>APOLLO</h1>
       <h2>HOTEL</h2>
     </div>
     <div class="popup_container" id="popup_container">
       <div class="form_container">
-        <form id="form_hotel" method="POST">
+        <form id="form_hotel" method="POST" action="{% url 'reservar' %}"> 
           <div class="name">
             <label for="name">Nome completo </label>
             <input type="text" name="name" placeholder="digite aqui" required>
@@ -150,9 +152,9 @@
               </div>
             </div>
           </fieldset>
-        </form>
+        {% csrf_token %}</form>
         <div class="button_call-action">
-          <button type="submit" id="reserve-button" form="form_hotel" class="button_item">
+          <button type="submit" id="reserve-button" form="form_hotel" class="button_item button_form_reserve">
             Reservar
           </button>
         </div>
@@ -167,6 +169,7 @@
   </section>
   <div id="overlay"></div>
   <main id="about">
+    {% include 'time.html' %}
     <section class="section_title">
       <div class="container">
         <h2>Sobre Nós</h2>
@@ -179,8 +182,8 @@
           <p>Fundado em 1950, o Apollo Hotel nasceu no mesmo ano em que os motores da Fórmula 1 ecoaram pela primeira vez nas ruas de Monte Carlo. O que começou como uma estalagem rústica para pescadores e entusiastas de corridas transformou-se em um ícone da Riviera Francesa, preservando em suas paredes de pedra as memórias das vitórias mais lendárias do Grand Prix. Combinando a força bruta da tradição mediterrânea com a sofisticação da elite europeia, o hotel consolidou-se como o refúgio preferido de quem busca exclusividade no coração de Mônaco.</p>
         </div>
         <div class="history_container-image">
-          <img src="src/images/image 3.png" alt="">
-          <img src="src/images/image 4.png" alt="">
+          <img src="{% static 'images/image 3.png' %}" alt="">
+          <img src="{% static 'images/image 4.png' %}" alt="">
         </div>
       </div>
     </section>
@@ -188,7 +191,7 @@
       <div class="container">
         <div class="card">
           <div class="box-icon">
-            <img src="src/images/icons/Icon (6).png" alt="">
+            <img src="{% static 'images/icons/Icon (6).png' %}" alt="">
           </div>
           <div class="value-text">
             <h4>Missão</h4>
@@ -199,7 +202,7 @@
         </div>
         <div class="card">
           <div class="box-icon">
-            <img src="src/images/icons/Vector.png" alt="">
+            <img src="{% static 'images/icons/Vector.png' %}" alt="">
           </div>
           <div class="value-text">
             <h4>Visão</h4>
@@ -210,7 +213,7 @@
         </div>
         <div class="card">
           <div class="box-icon">
-            <img src="src/images/icons/Icon (5).png" alt="">
+            <img src="{% static 'images/icons/Icon (5).png' %}" alt="">
           </div>
           <div class="value-text">
             <h4>Valores</h4>
@@ -235,7 +238,7 @@
           <div class="suport">
             <div class="team-profile">
               <figure>
-                <img src="src/images/team/Funcionário.png" alt="">
+                <img src="{% static 'images/team/Funcionário.png' %}" alt="">
                 <figcaption>
                   <h4>Jean-Luc Moreau</h4>
                   <p>Hotel Manager</p>
@@ -244,7 +247,7 @@
             </div>
             <div class="team-profile">
               <figure>
-                <img src="src/images/team/Funcionário (1).png" alt="">
+                <img src="{% static 'images/team/Funcionário (1).png' %}" alt="">
                 <figcaption>
                   <h4>Sophie Renault</h4>
                   <p>Executive Chef</p>
@@ -255,7 +258,7 @@
           <div class="suport">
             <div class="team-profile">
               <figure>
-                <img src="src/images/team/Funcionário (2).png" alt="">
+                <img src="{% static 'images/team/Funcionário (2).png' %}" alt="">
                 <figcaption>
                   <h4>Alessandro Rossi</h4>
                   <p>Chef Concierge</p>
@@ -264,7 +267,7 @@
             </div>
             <div class="team-profile">
               <figure>
-                <img src="src/images/team/Funcionário (3).png" alt="">
+                <img src="{% static 'images/team/Funcionário (3).png' %}" alt="">
                 <figcaption>
                   <h4>Clotilde Martin</h4>
                   <p>Spa Director</p>
@@ -276,6 +279,24 @@
       </div>
     </section>
   </main>
+<section class="suites">
+      <h3>Conheça as nossas temáticas e luxuosas Suítes</h3>
+      <div class="swiper">
+        <div class="swiper-wrapper container-carrossel">
+          <figure class="swiper-slide bed11">
+            <img src="{% static 'images/bedroom/martin-aramco.png'%}" alt="">
+            <figcaption>
+              <div class="label">
+                <p>Suíte Aston Martin Aramco</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+        <button class="suites-f1"><a href="{% url 'homepage' %}#suites-f1">Ver todas a Suítes disponíveis
+        </button>
+    </section>
+    </div>
+
   <footer>
     <div class="container footer_container">
       <div class="logo-apollo">
@@ -285,31 +306,31 @@
       <div class="footer_sub-container">
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="src/images/icons/instagram.png" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
+            <img class="icone" src="{% static 'images/icons/instagram.png' %}" alt="icone instagram"> <a href="//www.instagram.com" target="_blank" title="instagram">
               <p>@ApolloHotel</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="src/images/icons/facebook.png" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
+            <img class="icone" src="{% static 'images/icons/facebook.png' %}" alt="icone facebook"> <a href="https://www.facebook.com/" target="_blank" title="facebook">
               <p>ApolloHotel</p>
             </a>
           </li>
         </ul>
         <ul class="footer_list">
           <li class="list-item">
-            <img class="icone" src="src/images/icons/phone.png" alt="icone phone">
+            <img class="icone" src="{% static 'images/icons/phone.png' %}" alt="icone phone">
             <a class="link" href="tell:+37792506500" target="_blank" title="Phone number">
               <p>+377 9250 - 6500</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="" src="src/images/icons/email.png" alt="icone email">
+            <img class="" src="{% static 'images/icons/email.png' %}" alt="icone email">
             <a class="link" href="mailto:apollohotel@ejectufrn.com.br" target="_blank" title="E-mail">
               <p>apollohotel@ejectufrn.com.br</p>
             </a>
           </li>
           <li class="list-item">
-            <img class="icone" src="src/images/icons/map.png" alt="icone map">
+            <img class="icone" src="{% static 'images/icons/map.png' %}" alt="icone map">
             <a href="https://share.google/6eSVSr0tfvhIuniUh" target="_blank" title="endereço">
               <p>Pl. du Casino, 98000 Monaco, Mônaco</p>
             </a>
@@ -324,12 +345,13 @@
         <span class="footer_line"></span>
         <div class="copyright_container">
           <small>2026 - MISSÃOEJECT</small>
-          <img src="src/images/logo-eject.svg" alt="Logo EJECT" class="eject_logo">
+          <img src="{% static 'images/logo-eject.svg' %}" alt="Logo EJECT" class="eject_logo">
         </div>
       </div>
     </div>
   </footer>
 </body>
-<script src="hotel.js" defer></script>
+<script src="{% static 'js/hotel.js' %}" defer></script>
+<script src="{% static 'js/timerCorrida.js' %}" defer></script>
 
 </html>

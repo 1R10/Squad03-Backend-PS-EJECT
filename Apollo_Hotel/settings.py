@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 import os
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'homepage'
+    'homepage',
     'BlogPage',
 ]
 
@@ -57,13 +58,13 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
-        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'homepage.context_processors.timer_c', # adiciona o context processor para o timer ~emanuel
             ],
         },
     },
@@ -106,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
-LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
 
@@ -123,7 +123,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'core/static')
 ]
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL  = '/media/'
 # Default primary key field type
@@ -131,14 +130,16 @@ MEDIA_URL  = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 #config do email no django
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST    = 'smtp.gmail.com'
-EMAIL_PORT    = 587
-EMAIL_USE_TLS = True
 
-
-#Config da conta 
-EMAIL_HOST_USER     = 'ryanguilherme2003@gmail.com' # email de autenticaçao
-EMAIL_HOST_PASSWORD = 'nlht fznq zbpd bykk'         # vou excluir essa chave depois. sem problemas a exposiçao
-DEFAULT_FROM_EMAIL = 'ryanguilherme2003@gmail.com'  #remetente.  vai aparecer no email
+EMAIL_HOST    =  config('EMAIL_HOST')
+EMAIL_PORT    = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_USER     = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'ryanguilherme2003@gmail.com'  #remetente.  

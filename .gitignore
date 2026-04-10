@@ -4,7 +4,7 @@ venv/
 env/
 __pycache__/
 *.pyc
-
+migrations/
 
 #banco de dados
 *.sqlite3
