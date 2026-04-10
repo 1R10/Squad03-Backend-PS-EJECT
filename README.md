@@ -15,32 +15,48 @@ pip install -r requirements.txt
 ``` mermaid
 classDiagram
 
-Reserva <.. Quarto
-Reserva <.. Hospede
-<<Service>> Reserva
+class AbstractUser
 
-class Quarto{
-  -int quarto_id
-  +int quarto_numero
-  +float valor_diaria
-  +tipo_de_quarto()
-  +quarto_status()
-}
-class Hospede{
-  -int hospede_id
-  +str hospede_nome
-  #int hospede_telefone
-  #str hospede_email
+class User {
+  +full_name: CharField(255)
+  +job_title: CharField(255)
+  +image: ImageField(upload_to='profile_images/', null=True, blank=True)
 }
 
-class Reserva{
-  -int reserva_id
-  +bool check_in
-  +bool check_out
-  +float valor_total
-  +reserva_status()
-
+class BlogPost {
+  +title: CharField(150)
+  +content: TextField
+  +author: ForeignKey(User)
+  +created_at: DateTimeField(auto_now_add=True)
+  +image: ImageField(upload_to='blog_images/%Y/%m/%d')
+  +image_alt: CharField(250, blank=True)
+  +image_caption: CharField(250)
 }
+
+class Hospedes {
+  +nome: CharField(200)
+  +email: EmailField(200)
+  +celular: TextField
+  +adulto: PositiveIntegerField(default=1)
+  +crianca: PositiveIntegerField(default=0)
+  +check_in: DateField
+  +check_out: DateField
+  +quarto: TextField
+  +rest_dia: DateField
+  +rest_hora: TimeField
+}
+
+class funcionario {
+  +nome: CharField(200)
+  +cargo: CharField(200)
+}
+
+class timer_corrida {
+  +date: DateTimeField
+}
+
+AbstractUser <|-- User
+User "1" <-- "0..*" BlogPost : author
 ```
 
 
