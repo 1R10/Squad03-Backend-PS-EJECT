@@ -6,6 +6,8 @@ from django.db import models
 
 class Hospedes(models.Model):
     nome      = models.CharField(verbose_name='Nome completo', max_length= 200)
+    email     = models.EmailField(verbose_name='E-mail', max_length=200)
+    celular   = models.TextField() 
     adulto    = models.PositiveIntegerField(default=1) # Li um pouco e vi que assim só permite que receba 0 >= x. ~Ryan
     crianca   = models.PositiveIntegerField(default=0)
     check_in  = models.DateField() # vai receber em formato dd-mm-aaaa ~Ryan

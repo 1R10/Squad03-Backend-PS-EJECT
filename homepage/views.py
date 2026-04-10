@@ -8,6 +8,8 @@ def index(request):
 def reservar(request):
     if request.method =='POST': # por padrão é GET
         name      = request.POST.get('name')
+        mail      = request.POST.get('email')
+        phone     = request.POST.get('phone')
         check_in  = request.POST.get('check-in')
         check_out = request.POST.get('check-out')
         adults    = request.POST.get('amount-adult')
@@ -18,7 +20,9 @@ def reservar(request):
         
         
         reserva   =  Hospedes(
-                    nome      = name, 
+                    nome      = name,
+                    email     = mail,
+                    celular   = phone, 
                     adulto    = adults, 
                     crianca   = kids,
                     check_in  = check_in, 
