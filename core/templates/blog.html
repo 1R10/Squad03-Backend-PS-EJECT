@@ -36,7 +36,7 @@
       </nav>
       <div class="container_menu-button">
         <div class="button_call-action">
-          <button class="button_item">
+          <button class="button_item btn_reserve_menu">
             Fazer Reserva
           </button>
         </div>
@@ -67,14 +67,14 @@
     </div>
   </section>
   <section id="popup_reserve" class="popup_reserve">
-    <span id="close-reservation">Fechar</span>
+    <button class="close-reserve" id="close-reserve">Fechar</button>
     <div class="logo-apollo">
       <h1>APOLLO</h1>
       <h2>HOTEL</h2>
     </div>
     <div class="popup_container">
       <div class="form_container">
-        <form id="form_hotel" action="POST">
+        <form id="form_hotel" method="POST" action="{% url 'reservar' %}">  {% csrf_token %}
           <div class="name">
             <label for="name">Nome completo </label>
             <input type="text" name="name" placeholder="digite aqui" required>
@@ -101,17 +101,17 @@
             <label for="equipe-f1">Escolha a sua equipe:</label>
             <select name="equipe-f1" id="equipe-f1">
               <option value="" disabled selected>Selecione uma equipe</option>
-              <option value="red-bull">Red Bull Racing</option>
-              <option value="mercedes">Mercedes-AMG PETRONAS</option>
-              <option value="ferrari">Scuderia Ferrari</option>
-              <option value="mclaren">McLaren Formula 1 Team</option>
-              <option value="aston-martin">Aston Martin Aramco</option>
-              <option value="alpine">Alpine F1 Team</option>
-              <option value="williams">Williams Racing</option>
-              <option value="rb">Visa Cash App RB (VCARB)</option>
-              <option value="sauber">Stake F1 Team Sauber</option>
-              <option value="haas">MoneyGram Haas F1 Team</option>
-              <option value="audi">Audi F1 Team</option>
+              <option value="Red Bull Racing">Red Bull Racing</option>
+              <option value="Mercedes-AMG PETRONAS">Mercedes-AMG PETRONAS</option>
+              <option value="Scuderia Ferrari">Scuderia Ferrari</option>
+              <option value="McLaren Formula 1 Team">McLaren Formula 1 Team</option>
+              <option value="Aston Martin Aramco">Aston Martin Aramco</option>
+              <option value="Alpine F1 Team">Alpine F1 Team</option>
+              <option value="Williams Racing">Williams Racing</option>
+              <option value="Visa Cash App RB (VCARB)">Visa Cash App RB (VCARB)</option>
+              <option value="Stake F1 Team Sauber">Stake F1 Team Sauber</option>
+              <option value="MoneyGram Haas F1 Team">MoneyGram Haas F1 Team</option>
+              <option value="Audi F1 Team">Audi F1 Team</option>
             </select>
           </div>
           <div class="number-people">
@@ -176,8 +176,7 @@
         <h2>Destinos à dois perto de você</h2>
         <p class="introduction">Descubra refúgios exclusivos onde cada detalhe foi planejado para celebrar o amor</p>
         <div class="button_call-action">
-          <button id="reserve-button" class="button_item">
-            Fazer Reserva
+          <button class="button_item btn_reserve_menu">Fazer Reserva
           </button>
         </div>
       </div>

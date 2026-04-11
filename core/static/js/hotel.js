@@ -1,14 +1,16 @@
 const countdown = document.querySelector(".countdown");
 const arrowCountdown = document.querySelector(".arrow-countdown");
 
-arrowCountdown.addEventListener("click", () => {
-  countdown.style.display = "block";
-  arrowCountdown.style.display = "none";
-  setTimeout(function () {
-    countdown.style.display = "none";
-    arrowCountdown.style.display = "block";
-  }, 5000);
-});
+if (arrowCountdown) {
+  arrowCountdown.addEventListener("click", () => {
+    countdown.style.display = "block";
+    arrowCountdown.style.display = "none";
+    setTimeout(function () {
+      countdown.style.display = "none";
+      arrowCountdown.style.display = "block";
+    }, 5000);
+  });
+}
 
 const hamburguerButton = document.getElementById("hamburguer_button");
 const containerMenuHamburguer = document.querySelector(
@@ -22,7 +24,7 @@ const popupReserveRestaurant = document.querySelector(
   ".popup_reserve-restaurant",
 );
 
-const overlay = document.getElementById("overlay");
+const overlays = document.querySelectorAll(".overlays");
 const header = document.querySelector("header");
 
 window.addEventListener("resize", () => {
@@ -36,7 +38,9 @@ window.addEventListener("resize", () => {
       icon.forEach((item) => {
         item.style.display = "flex";
       });
-      overlay.style.display = "none";
+      overlays.forEach((overlay) => {
+        overlay.style.display = "none";
+      });
     }
   }
 });
@@ -50,39 +54,68 @@ function clickHambuguer() {
     });
     cancel.style.display = "block";
     containerMenuHamburguer.style.display = "flex";
-    overlay.style.display = "flex";
+    overlays.forEach((overlay) => {
+      overlay.style.display = "flex";
+    });
 
     open = false;
   } else {
     icon.forEach((item) => (item.style.display = "block"));
     cancel.style.display = "none";
     containerMenuHamburguer.style.display = "none";
-    overlay.style.display = "none";
+    overlays.forEach((overlay) => {
+      overlay.style.display = "none";
+    });
 
     open = true;
   }
+  overlays.forEach((overlay) => {
+    overlay.addEventListener("click", () => {
+      cancel.style.display = "none";
+      containerMenuHamburguer.style.display = "none";
+      overlay.style.display = "none"; // <-- Aqui ele tenta esconder
+      icon.forEach((item) => (item.style.display = "block"));
+    });
+  });
 }
 hamburguerButton.addEventListener("click", clickHambuguer);
 
 function openReserve() {
-  popupReserve.style.display = "flex";
-  overlay.style.display = "flex";
-  header.style.zIndex = "1000";
-  if (containerMenuHamburguer.style.display === "flex") {
+  if (popupReserve) popupReserve.style.display = "flex";
+
+  overlays.forEach((overlay) => {
+    overlay.style.display = "flex";
+  });
+
+  if (header) header.style.zIndex = "1000";
+
+  if (
+    containerMenuHamburguer &&
+    containerMenuHamburguer.style.display === "flex"
+  ) {
     containerMenuHamburguer.style.display = "none";
-    cancel.style.display = "none";
+    if (cancel) cancel.style.display = "none";
     icon.forEach((item) => {
       item.style.display = "flex";
     });
-    // if que diz pro hamburguer fechar ao abrir o form reserve
   }
 }
 function closeReserve() {
   popupReserve.style.display = "none";
-  popupReserveRestaurant.style.display = "none";
-  overlay.style.display = "none";
+  if (popupReserveRestaurant) {
+    popupReserveRestaurant.style.display = "none";
+  }
+  overlays.forEach((overlay) => {
+    overlay.style.display = "none";
+  });
   header.style.zIndex = "1002";
 }
+overlays.forEach((overlay) => {
+  overlay.addEventListener("click", () => {
+    closeReserve();
+  });
+});
+
 const buttonCallAction = document.querySelectorAll(".btn_reserve_menu");
 buttonCallAction.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -93,6 +126,9 @@ const buttonCloseReserve = document.querySelectorAll(".close-reserve");
 buttonCloseReserve.forEach((close) => {
   close.addEventListener("click", () => {
     closeReserve();
+    overlays.forEach((overlay) => {
+      overlay.style.display = "none";
+    });
   });
 });
 
@@ -101,10 +137,20 @@ const buttonReserveRestaurant = document.getElementById(
 );
 function openReserveRestaurant() {
   popupReserveRestaurant.style.display = "flex";
-  overlay.style.display = "flex";
+  overlays.forEach((overlay) => {
+    overlay.style.display = "flex";
+  });
 }
-buttonReserveRestaurant.addEventListener("click", openReserveRestaurant);
 
+overlays.forEach((overlay) => {
+  overlay.addEventListener("click", () => {
+    popupReserveRestaurant.style.display = "none";
+    overlay.style.display = "none";
+  });
+});
+if (buttonReserveRestaurant) {
+  buttonReserveRestaurant.addEventListener("click", openReserveRestaurant);
+}
 const inputDate = document.querySelectorAll('input[type="date"]');
 const dataCheckin = document.getElementById("check-in");
 const dataCheckout = document.getElementById("check-out");
@@ -164,8 +210,6 @@ function inputsRestaurant() {
   return true;
 }
 
-/*const formRest = document.getElementById("res_form_hotel");*/
-
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 /*incremento e decrementação dos inputs para os formulários*/
 
@@ -218,100 +262,75 @@ btnMenosChild.addEventListener("click", () => {
 btnMaisChild.addEventListener("click", () => {
   increase(inputTwo);
 });
-btnMenos.addEventListener("click", () => {
-  decrement(inputPeopleRestaurant);
-  console.log("apertou menos");
-});
-
-btnMais.addEventListener("click", () => {
-  increase(inputPeopleRestaurant);
-  console.log("apertou mais");
-});
+if (btnMenos) {
+  btnMenos.addEventListener("click", () => {
+    decrement(inputPeopleRestaurant);
+    console.log("apertou menos");
+  });
+}
+if (btnMais) {
+  btnMais.addEventListener("click", () => {
+    increase(inputPeopleRestaurant);
+    console.log("apertou mais");
+  });
+}
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 
-const slider = document.getElementById("slider");
-const img = document.querySelectorAll(".slider figure");
+if (typeof Swiper !== "undefined") {
+  new Swiper(".swiper-gallery", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    centeredSlides: true,
 
-let cont = 0;
-
-function slide() {
-  cont++;
-
-  if (cont > img.length - 1) {
-    cont = 0;
-  }
-  slider.style.transform = `translateX(${-cont * 1005}px)`;
-
-  carrossel.style.transform = `translateX(${-cont * 100}px)`;
+    navigation: {
+      nextEl: ".swiper-gallery .swiper-button-next",
+      prevEl: ".swiper-gallery .swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-gallery .swiper-pagination",
+      clickable: true,
+    },
+  });
 }
-setInterval(slide, 5000);
+const modal = document.querySelector("#modal-suites");
 
-const swiper = new Swiper(".swiper", {
-  direction: "horizontal",
-  loop: true,
-  autoplay: {
-    delay: 3000, // (3000ms = 3 segundos)
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
-  slidesPerView: 3,
-  spaceBetween: 30,
+if (modal) {
+  const modalImg = modal.querySelector("#modal-img");
+  const modalTitulo = modal.querySelector("#modal-titulo");
+  const modalDesc = modal.querySelector("#modal-desc");
+  const btnFechar = modal.querySelector(".close-button");
 
-  breakpoints: {
-    320: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 },
-  },
+  const slides = document.querySelectorAll(".swiper-slide");
 
-  pagination: {
-    el: ".swiper-pagination",
-  },
+  slides.forEach((slide) => {
+    slide.addEventListener("click", () => {
+      // 1. Puxa as "etiquetas" (data attributes) que a gente colocou no HTML
+      const infos = {
+        titulo: slide.getAttribute("data-titulo"),
+        imagem: slide.getAttribute("data-img"),
+        descricao: slide.getAttribute("data-desc"),
+      };
 
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+      // 2. Injeta os dados no modal
+      modalImg.src = infos.imagem;
+      modalTitulo.innerText = infos.titulo;
+      modalDesc.innerText = infos.descricao;
 
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
-/*função para o temporizador ~emanuel*/
+      modal.classList.add("active");
+      overlay.style.display = "flex";
+    });
+  });
 
-document.addEventListener("DOMContentLoaded", function () {
-  
-  const display = document.getElementsByClassName("timer")[0];
+  btnFechar.addEventListener("click", () => {
+    modal.classList.remove("active");
+    overlay.style.display = "none";
+  });
 
-  if (!display) return;
-
-  const countDownDate = new Date(display.getAttribute("data-target")).getTime();
-  
-  const x = setInterval(function() {
-        const now = new Date().getTime();
-        
-        // Encontra a diferença entre agora e a data alvo
-        const distance = countDownDate - now;
-
-        // Cálculos matemáticos para dias, horas, minutos e segundos
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        // Mostra o resultado na div (essa parte editei por mim mesmo ~emanuel)
-        if (days > 0) {
-          display.innerHTML = days + "d" + hours + "h";
-        } else if (hours < 10 && minutes < 10) {
-          display.innerHTML = "0" + hours + ":0" + minutes;
-        } else if (hours < 10) {
-          display.innerHTML = "0" + hours + ":" + minutes;
-        } else if (minutes < 10) {
-          display.innerHTML = hours + ":0" + minutes;
-        } else {
-          display.innerHTML = hours + ":" + minutes;
-        }
-
-        // Se o tempo acabar, para o timer e mostra uma mensagem
-        if (distance < 0) {
-            clearInterval(x);
-            display.innerHTML = "00:00";
-        }
-    }, 1000);
-});
+  overlays.forEach((overlay) => {
+    overlay.addEventListener("click", () => {
+      modal.classList.remove("active");
+      overlay.style.display = "none";
+    });
+  });
+}
