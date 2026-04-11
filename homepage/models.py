@@ -13,8 +13,17 @@ class Hospedes(models.Model):
     check_in  = models.DateField() # vai receber em formato dd-mm-aaaa ~Ryan
     check_out = models.DateField()
     quarto    = models.TextField()
+    rest_dia  = models.DateField(null=True, blank=True) # antes derrubava se não colocasse opcional ~Ryan
+    rest_hora = models.TimeField(null=True, blank=True)
+
+    
+class Restaurante(models.Model):
+    nome      = models.CharField(verbose_name='Nome completo', max_length= 200)
+    email     = models.EmailField(verbose_name='E-mail', max_length=200)
     rest_dia  = models.DateField()
     rest_hora = models.TimeField()
+    grupo     = models.PositiveBigIntegerField(default=1)
+
 
 class timer_corrida(models.Model):
     date = models.DateTimeField()

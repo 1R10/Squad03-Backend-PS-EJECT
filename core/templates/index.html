@@ -105,17 +105,17 @@
             <label for="equipe-f1">Escolha a sua equipe:</label>
             <select name="equipe-f1" id="equipe-f1">
               <option value="" disabled selected>Selecione uma equipe</option>
-              <option value="red-bull">Red Bull Racing</option>
-              <option value="mercedes">Mercedes-AMG PETRONAS</option>
-              <option value="ferrari">Scuderia Ferrari</option>
-              <option value="mclaren">McLaren Formula 1 Team</option>
-              <option value="aston-martin">Aston Martin Aramco</option>
-              <option value="alpine">Alpine F1 Team</option>
-              <option value="williams">Williams Racing</option>
-              <option value="rb">Visa Cash App RB (VCARB)</option>
-              <option value="sauber">Stake F1 Team Sauber</option>
-              <option value="haas">MoneyGram Haas F1 Team</option>
-              <option value="audi">Audi F1 Team</option>
+              <option value="Red Bull Racing">Red Bull Racing</option>
+              <option value="Mercedes-AMG PETRONAS">Mercedes-AMG PETRONAS</option>
+              <option value="Scuderia Ferrari">Scuderia Ferrari</option>
+              <option value="McLaren Formula 1 Team">McLaren Formula 1 Team</option>
+              <option value="Aston Martin Aramco">Aston Martin Aramco</option>
+              <option value="Alpine F1 Team">Alpine F1 Team</option>
+              <option value="Williams Racing">Williams Racing</option>
+              <option value="Visa Cash App RB (VCARB)">Visa Cash App RB (VCARB)</option>
+              <option value="Stake F1 Team Sauber">Stake F1 Team Sauber</option>
+              <option value="MoneyGram Haas F1 Team">MoneyGram Haas F1 Team</option>
+              <option value="Audi F1 Team">Audi F1 Team</option>
             </select>
           </div>
           <div class="number-people">
@@ -318,7 +318,7 @@
         </div>
         <div class="popup_container" id="popup_container_restaurant">
           <div class="form_container">
-            <form id="res_form_hotel" method="POST"> {% csrf_token %}
+            <form id="res_form_hotel" method="POST" action="{% url 'reservar_restaurante' %}"> {% csrf_token %}
               <fieldset class="name-and-email">
                 <div class="name">
                   <label for="name">Nome completo </label>
