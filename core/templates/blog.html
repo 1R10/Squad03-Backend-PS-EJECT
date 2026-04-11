@@ -201,20 +201,25 @@
 
         {% for p in blog_post %}
           <div class="card">
-            <figure>
-              <img src="{{ p.image.url }}" alt="{{ p.image_alt }}">
-              <figcaption>
-                <div class="caption-wrapper">
-                  <h4>{{ p.title }}</h4>
-                  <p>{{ p.content | truncatewords:20 }}</p>
-                  <div class="bottom_caption-wrapper">
-                    <span class="date">{{p.created_at | date:"d/m/Y"}}</span>
-                    <a href="{% url 'blog_detail' p.id %}"><button>Ler mais</button></a>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
+  <figure>
+    {% if p.image %}
+      <img src="{{ p.image.url }}" alt="{{ p.image_alt }}">
+    {% else %}
+      <img src="{% static 'images/blog/author.png' %}" alt="Imagem não disponível">
+    {% endif %}
+    
+    <figcaption>
+      <div class="caption-wrapper">
+        <h4>{{ p.title }}</h4>
+        <p>{{ p.content | truncatewords:20 }}</p>
+        <div class="bottom_caption-wrapper">
+          <span class="date">{{p.created_at | date:"d/m/Y"}}</span>
+          <a href="{% url 'blog_detail' p.id %}"><button>Ler mais</button></a>
+        </div>
+      </div>
+    </figcaption>
+  </figure>
+</div>
         {% endfor %}
       </div>
     </section>
