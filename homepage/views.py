@@ -36,11 +36,20 @@ def reservar(request):
                     rest_dia  = rest_date,
                     rest_hora = rest_time,
                      )
-                    
-        reserva.save()
-        referer = request.META.get('HTTP_REFERER', '/') # procura a url anterior a do forms. antes iria so pra homepage
-        return redirect(referer)
-        #return redirect('homepage')
+        
+        ocupao = Hospedes.objects.filter(
+            quarto=f1_Team,
+            check_in__lt=check_out, # lt = less than
+            check_out__gt=check_in  # gt = greater than
+        ).exists() # verifica no banco se a reserva já existe no quarto no período da data. se tiver, nem salva no banco(não ta dando trigger no e-mail)
+
+        if ocupao:
+            referer = request.META.get('HTTP_REFERER', '/')
+            return redirect(referer)
+        else:
+            reserva.save()
+            referer = request.META.get('HTTP_REFERER', '/')
+            return redirect(referer)            
 
 def reservar_restaurante(request):
     if request.method =='POST': 
