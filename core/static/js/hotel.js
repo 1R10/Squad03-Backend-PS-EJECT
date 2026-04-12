@@ -311,34 +311,43 @@ if (modal) {
 
   const slides = document.querySelectorAll(".swiper-slide");
 
-  slides.forEach((slide) => {
+slides.forEach((slide) => {
     slide.addEventListener("click", () => {
-      // 1. Puxa as "etiquetas" (data attributes) que a gente colocou no HTML
       const infos = {
         titulo: slide.getAttribute("data-titulo"),
         imagem: slide.getAttribute("data-img"),
         descricao: slide.getAttribute("data-desc"),
       };
 
-      // 2. Injeta os dados no modal
       modalImg.src = infos.imagem;
       modalTitulo.innerText = infos.titulo;
       modalDesc.innerText = infos.descricao;
 
       modal.classList.add("active");
-      overlay.style.display = "flex";
+
+      overlays.forEach((ov) => {
+        ov.style.display = "flex";
+      });
     });
   });
 
   btnFechar.addEventListener("click", () => {
     modal.classList.remove("active");
-    overlay.style.display = "none";
-  });
+    overlays.forEach((ov) => {
+      ov.style.display = "none";
+    });
+    });
+  
 
-  overlays.forEach((overlay) => {
+ overlays.forEach((overlay) => {
     overlay.addEventListener("click", () => {
       modal.classList.remove("active");
-      overlay.style.display = "none";
+      
+      
+      overlays.forEach((ov) => {
+        ov.style.display = "none";
+      });
+      
     });
   });
 }

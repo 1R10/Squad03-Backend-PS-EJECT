@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import Hospedes, timer_corrida, Restaurante
+from .models import Hospedes, timer_corrida, Restaurante, Suite
 # aqui vai renderizar o html aparentemente ~Ryan
 
 def index(request):
-    return render(request, 'index.html')
+    suites_list = Suite.objects.all() 
+    context = {
+        'suites': suites_list, 
+    }
+    
+    # 3. Renderiza a página passando os dados
+    return render(request, 'index.html', context)
 
 def reservar(request):
+    '''Vai gerar uma reserva de um hóspede podendo OU NÃO ter reserva no restaurante'''
     if request.method =='POST': # por padrão é GET ~Ryan
         print("POST recebido:", request.POST)
         name      = request.POST.get('name')
@@ -52,6 +59,7 @@ def reservar(request):
             return redirect(referer)            
 
 def reservar_restaurante(request):
+    '''Vai gerar uma reserva no restaurante'''
     if request.method =='POST': 
         print("POST recebido:", request.POST)
 
@@ -74,6 +82,15 @@ def reservar_restaurante(request):
         reserva_restaurante.save()
         referer = request.META.get('HTTP_REFERER', '/') 
         return redirect(referer)
+    
+def homepage_suites(request):
+    '''Vai puxar todas as suítes cadastradas no banco'''
+    suites_list = Suite.objects.all() 
+    
+    context = {
+        'suites': suites_list, # Dá o nome de 'suites' para usar no HTML
+    }
+    return render(request, 'index.html', context)
 
 def blog(request):
     return render(request, 'blog.html')

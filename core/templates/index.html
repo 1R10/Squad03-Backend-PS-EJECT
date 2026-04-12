@@ -218,92 +218,26 @@
       <h3>Conheça as nossas temáticas e luxuosas Suítes</h3>
       <div class="swiper">
         <div class="swiper-wrapper container-carrossel">
-          <figure class="swiper-slide bed1">
-            <img src="{% static 'images/bedroom/redbull.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Red Bull Racing</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed2">
-            <img src="{% static 'images/bedroom/ferrari.jpg' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Scuderia Ferrari</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed3">
-            <img src="{% static 'images/bedroom/mercedes.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Mercedes-AMG Petronas</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed4">
-            <img src="{% static 'images/bedroom/mclaren.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte McLaren</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed5">
-            <img src="{% static 'images/bedroom/williams-racing.jpeg' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Williams rancing</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed5">
-            <img src="{% static 'images/bedroom/martin-aramco.png' %}" alt="">
-            <figcaption>
-              <p>Suíte Aston Martin Aramco</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed6">
-            <img src="{% static 'images/bedroom/BTW.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte BWT Alpine</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed8">
-            <img src="{% static 'images/bedroom/hass.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Haas F1 Team</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed8">
-            <img src="{% static 'images/bedroom/hass.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Haas F1 Team</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed9">
-            <img src="{% static 'images/bedroom/kick-sauber.png' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Kick Sauber</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed10">
-            <img src="{% static 'images/bedroom/visa.jpg' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <p>Suíte Visa Cash App RB (VCARB)</p>
-            </figcaption>
-          </figure>
-          <figure class="swiper-slide bed11">
-            <img src="{% static 'images/bedroom/campeoes.jpg' %}" alt="">
-            <div class="hover-text">Clique aqui</div>
-            <figcaption>
-              <div class="label">
-                <p>Suíte dos Campeões Históricos</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
+  
+  {% for suite in suites %}
+    <figure class="swiper-slide" 
+            data-titulo="{{ suite.name }}" 
+            data-desc="{{ suite.description }}"
+            data-img="{% if suite.image %}{{ suite.image.url }}{% else %}{% static 'images/placeholder.png' %}{% endif %}">
+            
+      {% if suite.image %}
+        <img src="{{ suite.image.url }}" alt="Suíte {{ suite.name }}">
+      {% else %}
+        <img src="{% static 'images/placeholder.png' %}" alt="Sem imagem">
+      {% endif %}
+      
+      <div class="hover-text">Clique aqui</div>
+      <figcaption>Suíte {{ suite.name }}</figcaption>
+      
+    </figure>
+  {% endfor %}
+  
+</div>
         <div class="swiper-pagination"></div>
 
         <!-- If we need navigation buttons -->
@@ -418,6 +352,26 @@
         <button id="arrow_right">&gt;</button>
       </div>
     </section>
+<div id="modal-suites" class="modal">
+  <div class="modal-content">
+    <button class="close-button">×</button>
+    
+    <div class="logo-apollo">
+      <h1>APOLLO</h1>
+      <h2>HOTEL</h2>
+    </div>
+
+    <div class="modal-body">
+      <img id="modal-img" src="" alt="Imagem da Suíte">
+      
+      <div class="modal-text">
+        <h3 id="modal-titulo"></h3>
+        <p id="modal-desc"></p>
+        <button class="button_item btn_reserve_menu">Fazer Reserva</button>
+      </div>
+    </div>
+  </div>
+</div>
   </main>
   <footer>
     <div class="container footer_container">
@@ -472,8 +426,16 @@
       </div>
     </div>
   </footer>
-</body>
+
 <script src="{% static 'js/hotel.js' %}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="{% static 'js/timerCorrida.js' %}" defer></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<script src="{% static 'js/suites.js' %}" defer></script>
+
+<script src="{% static 'js/hotel.js' %}" defer></script>
 <script src="{% static 'js/timerCorrida.js' %}" defer></script>
 </html>

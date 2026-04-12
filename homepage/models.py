@@ -27,3 +27,11 @@ class Restaurante(models.Model):
 
 class timer_corrida(models.Model):
     date = models.DateTimeField()
+
+class Suite(models.Model):
+    name = models.CharField(max_length=100) 
+    description = models.TextField()# texto do modal
+    image = models.ImageField(upload_to='suites/', null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
