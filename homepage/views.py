@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Hospedes, timer_corrida, Restaurante, Suite
-# aqui vai renderizar o html aparentemente ~Ryan
+from django.utils import timezone
 
 def index(request):
     suites_list = Suite.objects.all() 
@@ -8,7 +8,11 @@ def index(request):
         'suites': suites_list, 
     }
     
-    # 3. Renderiza a página passando os dados
+    hoje = timezone.now().date()
+    
+    Hospedes.objects.filter   (check_out__lt = hoje).delete()
+    Restaurante.objects.filter(rest_dia__lt  = hoje).delete()
+
     return render(request, 'index.html', context)
 
 def reservar(request):
