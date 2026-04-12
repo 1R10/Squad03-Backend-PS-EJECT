@@ -106,7 +106,7 @@
   .cards h3,
   .gallery h3,
   #about .section_title h3,
-  #about .team h3 {
+  #about .team h3, .suites h3 {
     font-size: 3rem;
     text-align: center;
   }
@@ -119,5 +119,24 @@
   }
   .history_container-image img {
     max-width: 100%;
+  }
+}
+/* Isso vai pegar quase todos os iPhones modernos */
+@media screen and (max-width: 500px) {
+  #index .banner,
+  #index .cards,
+  #index .restaurant,
+  #blog .banner {
+    background-attachment: scroll !important;
+  }
+  #index .card .subtitle-card,
+  #blog .banner {
+    padding-top: 10px !important;
+  }
+    .modal-content #modal-titulo {
+    font-size: 2rem;
+  }
+  .modal-content #modal-desc {
+    font-size: 2rem;
   }
 }

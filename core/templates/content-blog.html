@@ -172,15 +172,23 @@
           {{ blog.title }}
         </h2>
         <div class="author">  
-          <img src="{% static 'images/blog/author.png' %}" alt="">
+          {% if blog.author.image %}
+            <img src="{{ blog.author.image.url }}" alt="{{ blog.author.full_name }}">
+          {% else %}
+            <img src="{% static 'images/blog/author.png' %}" alt="Autor sem foto">
+          {% endif %}
           <div class="author-name">
-            <p>Por<span> {{ blog.author }}<span></p>
+            <p>Por<span> {{ blog.author.full_name }}<span></p>
             <p>{{ blog.created_at | date:"d/m/Y"}}</p>
           </div>
         </div>
         <div class="text">
           <figure>
-            <img src="{{ blog.image.url}}" alt="{{ blog.image_alt }}">
+            {% if blog.image %}
+              <img src="{{ blog.image.url }}" alt="{{ blog.image_alt }}">
+            {% else %}
+              <img src="{% static 'images/blog/author.png' %}" alt="Imagem não disponível">
+            {% endif %}
             <figcaption>{{ blog.image_caption }}</figcaption>
           </figure>
             {% for p in paragraphs %}
@@ -191,7 +199,11 @@
               {% elif p.word_one == "!image!" %}
                 <div class="caption-image">
                   <figure>
-                    <img src="{{ blog.image.url}}" alt="{{ blog.image_alt }}">
+                    {% if blog.image %}
+                      <img src="{{ blog.image.url }}" alt="{{ blog.image_alt }}">
+                    {% else %}
+                      <img src="{% static 'images/blog/author.png' %}" alt="Imagem não disponível">
+                    {% endif %}
                   <figcaption>{{ blog.image_caption }}</figcaption>
                   </figure>
 
@@ -207,7 +219,7 @@
             {% endfor %}
         </div>
         <div class="button_blog" onclick="backBlog()">
-          <a href="blog.html">
+          <a href="{% url 'blog_page' %}">
             <button>Voltar ao blog</button>
           </a>
         </div>
@@ -269,6 +281,5 @@
   </footer>
 </body>
 <script src="{% static 'js/hotel.js' %}" defer></script>
-<script src="{% static 'js/blog.js' %}" defer></script>
 
 </html>

@@ -1,0 +1,177 @@
+.suites {
+  min-height: 80vh;
+  padding: 20px 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: var(--color-brown);
+  border: 2px solid var(--color-gold);
+  background-image: url("https://www.transparenttextures.com/patterns/white-wall-3-2.png");
+}
+.swiper {
+  width: 90%;
+  padding: 20px 0 60px !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--color-gold) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-gold) !important;
+}
+.container-carrossel figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 350px;
+}
+
+.container-carrossel img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  display: block;
+}
+.container-carrossel figure:hover {
+  transform: translateY(-10px);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.hover-text {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(-50%, -50%);
+  color: var(--color-primary-text);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Cinzel", serif;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.container-carrossel figure:hover .hover-text {
+  opacity: 1;
+}
+.container-carrossel figcaption {
+  position: absolute;
+  background-color: var(--color-primary-text);
+  padding: 0 5px;
+  bottom: 0;
+  font-size: 1.5rem;
+  font-family: "Cinzel", serif;
+  color: var(--color-wine);
+  font-weight: 500;
+}
+.container-carrossel figure p {
+  font-size: 2rem;
+}
+
+#modal-suites {
+  display: none; 
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro atrás do modal */
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-suites.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #d2cdc4; /* Cor de fundo bege do seu front */
+  width: 90%;
+  max-width: 1000px;
+  padding: 60px;
+  position: relative;
+  border: 2px solid var(--color-gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal-content .logo-apollo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content .logo-apollo h1 { font-size: 2.5rem; color: var(--color-wine); }
+.modal-content .logo-apollo h2 { font-size: 1.2rem; color: var(--color-wine); letter-spacing: 5px; }
+
+.modal-body {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+}
+
+#modal-img {
+  width: 50%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.modal-text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#modal-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 3.5rem;
+  color: #333;
+  text-transform: uppercase;
+}
+
+#modal-desc {
+  font-size: 1.5rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.modal-text .btn_reserve_menu {
+  align-self: flex-start;
+  padding: 15px 40px;
+  background-color: var(--color-wine);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: var(--color-wine);
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .modal-body { flex-direction: column; }
+  #modal-img, .modal-text { width: 100%; }
+}
